@@ -1,0 +1,32 @@
+<form class="row" [formGroup]="formGroup">
+  
+    <mat-toolbar color="primary">
+      <span class="fill-remaining-space">Add New Form</span>
+    </mat-toolbar>
+    <mat-form-field class="col-12">
+      <input matInput placeholder="Product Title" formControlName="name">
+      <!-- <mat-error *ngIf="formGroup.get('email').hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="formGroup.get('email').hasError('pattern')">
+        Please enter correct Email Id
+      </mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+        <textarea formControlName="discription"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Select Category" formControlName="category">
+          <mat-option value="kitchenItem">Kitchen Item</mat-option>
+          <mat-option value="electronic">Electronics</mat-option>
+          <mat-option value="furniture">Furniture</mat-option>
+          <mat-option value="cloths">Cloths</mat-option>
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Amount" type="number" class="example-right-align" formControlName="amount">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+<button mat-raised-button color="primary" type="submit" (click)="addProduct()" class="button" >Add New Product</button>

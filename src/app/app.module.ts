@@ -1,29 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { NavigationService } from './navigationService/navigationService.component'
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes} from '@angular/router';
+import { MaterialModule } from '../material-module';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { AppComponent } from './app.component';
+import { NavItemsService } from './services/navItems.service';
+import { UsersService } from './services/users.service';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutes } from './models/routes';
+import { ItemsService } from './services/items.service';
+import { ProductComponent } from './components/product/product.component';
+import { DetailsComponent } from './components/details/details.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+
+ const appRoutes: Routes = AppRoutes;
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HomeComponent,
+    LoginComponent,
+    ProductComponent,
+    DetailsComponent,
+    AddProductComponent,
+    
   ],
   imports: [
     BrowserModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    BrowserAnimationsModule
+    MaterialModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes,{ enableTracing: false } )
   ],
-  providers: [NavigationService],
+  providers: [ UsersService, NavItemsService, ItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ export class NavigationService {
         navlist: NavList[] = navList;
         constructor() {}
         getNavList() {
+            
             return navList;
         }
 

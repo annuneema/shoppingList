@@ -1,0 +1,32 @@
+<form class="row" [formGroup]="formGroup">
+  <!-- <h2>Application Login </h2> -->
+  <mat-toolbar color="primary">
+    <span class="fill-remaining-space">Login Form</span>
+  </mat-toolbar>
+  <mat-form-field class="col-12">
+    <input matInput placeholder="Email" formControlName="email">
+    <!--  <mat-hint>Errors appear instantly!</mat-hint> -->
+    <mat-error *ngIf="formGroup.get('email').hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="formGroup.get('email').hasError('pattern')">
+      Please enter correct Email Id
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col-12">
+    <input matInput placeholder="Password" formControlName="password">
+    <mat-hint>Accepts alphabates and numbers only</mat-hint>
+    <!--  <mat-error *ngIf="!passwordFormControl.hasError('required')">
+          Please Enter a valid combination of alphabates and number.
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error> -->
+  </mat-form-field>
+  <div class="form-element col-12">
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="button" [disabled]="!formGroup.valid">Submit
+      Form</button>
+  </div>
+
+
+</form>

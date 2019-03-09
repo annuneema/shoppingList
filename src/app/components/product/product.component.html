@@ -1,0 +1,13 @@
+<!-- <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let product of Products">
+      <p>{{product.name}}</p>
+      <a href="">{{product.price}}</a>
+    </mat-list-item>
+  </mat-list> -->
+<div *ngFor="let product of Products">
+    <p>{{product.name}}</p>
+    <a href="">{{product.price}}</a>
+</div>
+
+<app-add-product></app-add-product>
+
