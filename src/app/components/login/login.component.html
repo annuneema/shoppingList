@@ -1,6 +1,6 @@
 <form class="row" [formGroup]="formGroup">
   <!-- <h2>Application Login </h2> -->
-  <mat-toolbar color="primary">
+  <mat-toolbar color="">
     <span class="fill-remaining-space">Login Form</span>
   </mat-toolbar>
   <mat-form-field class="col-12">
@@ -16,17 +16,18 @@
   <mat-form-field class="col-12">
     <input matInput placeholder="Password" formControlName="password">
     <mat-hint>Accepts alphabates and numbers only</mat-hint>
-    <!--  <mat-error *ngIf="!passwordFormControl.hasError('required')">
+    <mat-error *ngIf="formGroup.get('password').hasError('pattern')">
           Please Enter a valid combination of alphabates and number.
         </mat-error>
-        <mat-error *ngIf="passwordFormControl.hasError('required')">
+        <mat-error *ngIf="formGroup.get('password').hasError('required')">
           Password is <strong>required</strong>
-        </mat-error> -->
+        </mat-error> 
   </mat-form-field>
   <div class="form-element col-12">
     <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="button" [disabled]="!formGroup.valid">Submit
       Form</button>
+    <div class="alert alert-danger" *ngIf="NoUserMatch">
+          Enter the correct Credentails
+    </div>
   </div>
-
-
 </form>

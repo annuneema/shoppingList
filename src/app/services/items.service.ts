@@ -1,13 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-
+import {PRODUCTS} from '../mock-data/products';
+import { Item } from '../models/item';
 @Injectable()
 export class ItemsService {
-    constructor(private http: HttpClient) { }
+    constructor() { }
+    public ItemArray: Item[] = PRODUCTS;
+    getItems() {
+        return this.ItemArray;
+    } 
 
-    getItems(): Observable<any> {
-        return this.http.get('assets/items.json');
+    SetProduct(productdata) {
+        this.ItemArray.push(productdata);
+    }
+
+    GetProductList() {
+        if(this.ItemArray.length) {
+            return this.ItemArray;
+        } else {
+            return this.ItemArray;
+        }
+
+       
+
     }
 
 }

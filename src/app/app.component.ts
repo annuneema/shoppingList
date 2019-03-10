@@ -2,6 +2,7 @@ import { Component,ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { NavItemsService } from './services/navItems.service';
 import { Menu } from './models/menu';
+import { ItemsService } from './services/items.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,9 @@ export class AppComponent implements OnInit, OnDestroy{
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private navlist: NavItemsService ) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, 
+    private navlist: NavItemsService,
+    private itemService: ItemsService ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -35,5 +38,10 @@ export class AppComponent implements OnInit, OnDestroy{
   }
   ngOnInit():void {
       this.navmenus = this.navlist.getNavItems();
+      const list = this.itemService.GetProductList();
+      console.log('get list', list);
+      if (!list.length) {
+        this.itemService.getItems();
+      }
   }
 }

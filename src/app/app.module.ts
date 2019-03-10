@@ -12,10 +12,12 @@ import { UsersService } from './services/users.service';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutes } from './models/routes';
+import { AuthService } from './authGard/auth.service'
 import { ItemsService } from './services/items.service';
 import { ProductComponent } from './components/product/product.component';
 import { DetailsComponent } from './components/details/details.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { AuthGard } from './authGard/authgard';
 
  const appRoutes: Routes = AppRoutes;
 
@@ -38,7 +40,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
     HttpClientModule,
     RouterModule.forRoot(appRoutes,{ enableTracing: false } )
   ],
-  providers: [ UsersService, NavItemsService, ItemsService],
+  providers: [ UsersService, NavItemsService, ItemsService, AuthService, AuthGard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-    <mat-toolbar color="primary" class="example-toolbar">
+<div class="sl-container" [class.sl-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="sl-toolbar">
         <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-        <h1 class="example-app-name">{{title}}</h1>
+        <h2 class="sl-name display-2">Shopping List</h2>
+        <div i18n class="sl-date-time" > tet </div>
     </mat-toolbar>
-  <mat-sidenav-container class="example-sidenav-container"
+  <mat-sidenav-container class="sl-sidenav-container"
                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
@@ -13,13 +14,7 @@
       </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-          <router-outlet>
-
-          </router-outlet>
+          <router-outlet></router-outlet>
       </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
-<div>
-
-  
 </div>

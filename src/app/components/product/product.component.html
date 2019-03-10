@@ -1,13 +1,20 @@
-<!-- <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let product of Products">
-      <p>{{product.name}}</p>
-      <a href="">{{product.price}}</a>
-    </mat-list-item>
-  </mat-list> -->
-<div *ngFor="let product of Products">
-    <p>{{product.name}}</p>
-    <a href="">{{product.price}}</a>
+<div class="row">
+    <div class="col-6">
+        <mat-grid-list cols="6">
+            <mat-toolbar color="">
+                <span class="fill-remaining-space">All Products</span>
+            </mat-toolbar>
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let product of Products" (click)="onSelect(product)">
+                    <p>{{product.name}}</p>
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-list>
+    </div>
+    <div class="col-6">
+        <mat-grid-list cols="6">
+            <div><button (click)="AddProduct()" ><i class="material-icons">add</i>Add New Product</button></div>
+            <app-add-product *ngIf="AddProductFlag" (sendData) = UpdateList($event)></app-add-product>
+        </mat-grid-list>
+    </div>
 </div>
-
-<app-add-product></app-add-product>
-
