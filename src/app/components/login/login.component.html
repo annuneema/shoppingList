@@ -14,7 +14,7 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field class="col-12">
-    <input matInput placeholder="Password" formControlName="password">
+    <input matInput type="password" placeholder="Password" formControlName="password">
     <mat-hint>Accepts alphabates and numbers only</mat-hint>
     <mat-error *ngIf="formGroup.get('password').hasError('pattern')">
           Please Enter a valid combination of alphabates and number.
